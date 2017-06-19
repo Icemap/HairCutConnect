@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wqz.hcc.dao.StoreInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.wqz.hcc.pojo.StoreInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="shop_sign" property="shopSign" jdbcType="VARCHAR" />
+    <result column="lon" property="lon" jdbcType="DOUBLE" />
+    <result column="lat" property="lat" jdbcType="DOUBLE" />
+    <result column="head_icon" property="headIcon" jdbcType="VARCHAR" />
+    <result column="hold" property="hold" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, shop_sign, lon, lat, head_icon, hold
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from store_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from store_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wqz.hcc.pojo.StoreInfo" >
+    insert into store_info (id, shop_sign, lon, 
+      lat, head_icon, hold)
+    values (#{id,jdbcType=INTEGER}, #{shopSign,jdbcType=VARCHAR}, #{lon,jdbcType=DOUBLE}, 
+      #{lat,jdbcType=DOUBLE}, #{headIcon,jdbcType=VARCHAR}, #{hold,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wqz.hcc.pojo.StoreInfo" >
+    insert into store_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="shopSign != null" >
+        shop_sign,
+      </if>
+      <if test="lon != null" >
+        lon,
+      </if>
+      <if test="lat != null" >
+        lat,
+      </if>
+      <if test="headIcon != null" >
+        head_icon,
+      </if>
+      <if test="hold != null" >
+        hold,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="shopSign != null" >
+        #{shopSign,jdbcType=VARCHAR},
+      </if>
+      <if test="lon != null" >
+        #{lon,jdbcType=DOUBLE},
+      </if>
+      <if test="lat != null" >
+        #{lat,jdbcType=DOUBLE},
+      </if>
+      <if test="headIcon != null" >
+        #{headIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="hold != null" >
+        #{hold,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wqz.hcc.pojo.StoreInfo" >
+    update store_info
+    <set >
+      <if test="shopSign != null" >
+        shop_sign = #{shopSign,jdbcType=VARCHAR},
+      </if>
+      <if test="lon != null" >
+        lon = #{lon,jdbcType=DOUBLE},
+      </if>
+      <if test="lat != null" >
+        lat = #{lat,jdbcType=DOUBLE},
+      </if>
+      <if test="headIcon != null" >
+        head_icon = #{headIcon,jdbcType=VARCHAR},
+      </if>
+      <if test="hold != null" >
+        hold = #{hold,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wqz.hcc.pojo.StoreInfo" >
+    update store_info
+    set shop_sign = #{shopSign,jdbcType=VARCHAR},
+      lon = #{lon,jdbcType=DOUBLE},
+      lat = #{lat,jdbcType=DOUBLE},
+      head_icon = #{headIcon,jdbcType=VARCHAR},
+      hold = #{hold,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

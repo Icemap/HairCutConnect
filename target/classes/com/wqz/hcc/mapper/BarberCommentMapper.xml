@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wqz.hcc.dao.BarberCommentMapper" >
+  <resultMap id="BaseResultMap" type="com.wqz.hcc.pojo.BarberComment" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="barber_id" property="barberId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="score" property="score" jdbcType="INTEGER" />
+    <result column="src_prize" property="srcPrize" jdbcType="DOUBLE" />
+    <result column="target_prize" property="targetPrize" jdbcType="DOUBLE" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="pics" property="pics" jdbcType="VARCHAR" />
+    <result column="datetime" property="datetime" jdbcType="TIMESTAMP" />
+    <result column="see_num" property="seeNum" jdbcType="INTEGER" />
+    <result column="like_num" property="likeNum" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, barber_id, user_id, score, src_prize, target_prize, content, pics, datetime, 
+    see_num, like_num
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from barber_comment
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from barber_comment
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wqz.hcc.pojo.BarberComment" >
+    insert into barber_comment (id, barber_id, user_id, 
+      score, src_prize, target_prize, 
+      content, pics, datetime, 
+      see_num, like_num)
+    values (#{id,jdbcType=INTEGER}, #{barberId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+      #{score,jdbcType=INTEGER}, #{srcPrize,jdbcType=DOUBLE}, #{targetPrize,jdbcType=DOUBLE}, 
+      #{content,jdbcType=VARCHAR}, #{pics,jdbcType=VARCHAR}, #{datetime,jdbcType=TIMESTAMP}, 
+      #{seeNum,jdbcType=INTEGER}, #{likeNum,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wqz.hcc.pojo.BarberComment" >
+    insert into barber_comment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="barberId != null" >
+        barber_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+      <if test="srcPrize != null" >
+        src_prize,
+      </if>
+      <if test="targetPrize != null" >
+        target_prize,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="pics != null" >
+        pics,
+      </if>
+      <if test="datetime != null" >
+        datetime,
+      </if>
+      <if test="seeNum != null" >
+        see_num,
+      </if>
+      <if test="likeNum != null" >
+        like_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="barberId != null" >
+        #{barberId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=INTEGER},
+      </if>
+      <if test="srcPrize != null" >
+        #{srcPrize,jdbcType=DOUBLE},
+      </if>
+      <if test="targetPrize != null" >
+        #{targetPrize,jdbcType=DOUBLE},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="pics != null" >
+        #{pics,jdbcType=VARCHAR},
+      </if>
+      <if test="datetime != null" >
+        #{datetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="seeNum != null" >
+        #{seeNum,jdbcType=INTEGER},
+      </if>
+      <if test="likeNum != null" >
+        #{likeNum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wqz.hcc.pojo.BarberComment" >
+    update barber_comment
+    <set >
+      <if test="barberId != null" >
+        barber_id = #{barberId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="score != null" >
+        score = #{score,jdbcType=INTEGER},
+      </if>
+      <if test="srcPrize != null" >
+        src_prize = #{srcPrize,jdbcType=DOUBLE},
+      </if>
+      <if test="targetPrize != null" >
+        target_prize = #{targetPrize,jdbcType=DOUBLE},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="pics != null" >
+        pics = #{pics,jdbcType=VARCHAR},
+      </if>
+      <if test="datetime != null" >
+        datetime = #{datetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="seeNum != null" >
+        see_num = #{seeNum,jdbcType=INTEGER},
+      </if>
+      <if test="likeNum != null" >
+        like_num = #{likeNum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wqz.hcc.pojo.BarberComment" >
+    update barber_comment
+    set barber_id = #{barberId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      score = #{score,jdbcType=INTEGER},
+      src_prize = #{srcPrize,jdbcType=DOUBLE},
+      target_prize = #{targetPrize,jdbcType=DOUBLE},
+      content = #{content,jdbcType=VARCHAR},
+      pics = #{pics,jdbcType=VARCHAR},
+      datetime = #{datetime,jdbcType=TIMESTAMP},
+      see_num = #{seeNum,jdbcType=INTEGER},
+      like_num = #{likeNum,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
