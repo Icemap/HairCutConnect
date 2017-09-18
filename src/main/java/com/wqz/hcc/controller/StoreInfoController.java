@@ -3,6 +3,7 @@ package com.wqz.hcc.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,7 +17,7 @@ public class StoreInfoController
 	@Autowired
 	StoreInfoServiceImpl storeInfoServiceImpl;
 	
-	@RequestMapping(value = "/insertStore", params = "POST")
+	@RequestMapping(value = "/insertStore", method = RequestMethod.POST)
 	@ResponseBody
 	public Object insertStore(
 			@RequestParam(value = "lon",required = true)Double lon, 
@@ -30,7 +31,7 @@ public class StoreInfoController
 				shopSign, tradeName, headIcon);
 	}
 	
-	@RequestMapping(value = "/getStore", params = "GET")
+	@RequestMapping(value = "/getStore", method = RequestMethod.GET)
 	@ResponseBody
 	public Object getStore(Double left, Double right,
     		Double top, Double bottom)
@@ -38,7 +39,7 @@ public class StoreInfoController
 		return storeInfoServiceImpl.getStore(left, right, top, bottom);
 	}
 	
-	@RequestMapping(value = "/deleteStore", params = "POST")
+	@RequestMapping(value = "/deleteStore", method = RequestMethod.POST)
 	@ResponseBody
 	public Object deleteStore(Integer storeId)
 	{

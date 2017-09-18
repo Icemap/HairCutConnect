@@ -3,6 +3,7 @@ package com.wqz.hcc.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,21 +17,21 @@ public class UserInfoController
 	@Autowired
 	UserInfoServiceImpl userInfoServiceImpl;
 	
-	@RequestMapping(value = "/login", params = "GET")
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	@ResponseBody
 	public Object login(String account, String password)
 	{
 		return userInfoServiceImpl.accountLogin(account, password);
 	}
 
-	@RequestMapping(value = "/register", params = "POST")
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	@ResponseBody
 	public Object register(String account, String password)
 	{
 		return userInfoServiceImpl.accountRegister(account, password);
 	}
 
-	@RequestMapping(value = "/infoUpdate", params = "POST")
+	@RequestMapping(value = "/infoUpdate", method = RequestMethod.POST)
 	@ResponseBody
 	public Object infoUpdate(
 			@RequestParam(value = "userId",required = true)Integer userId, 
