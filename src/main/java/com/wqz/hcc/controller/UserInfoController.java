@@ -13,6 +13,6 @@ public class UserInfoController
 	@ResponseBody
 	public Object login()
 	{
-		return null;
+		return "Hello World!";
 	}
 }
