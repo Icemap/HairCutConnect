@@ -122,36 +122,47 @@ public class FileUtils
 	public static String savePic(InputStream inputStream, String fileName,String path) 
 	{
 		String savePath = "";
-		
-        OutputStream os = null;
-        try {
-            byte[] bs = new byte[1024];
-            int len;
 
-            File tempFile = new File(path);
-            if (!tempFile.exists()) {
-                tempFile.mkdirs();
-            }
-            
-            os = new FileOutputStream(path + "/" + fileName);
-            // 寮�濮嬭鍙�
-            while ((len = inputStream.read(bs)) != -1) {
-                os.write(bs, 0, len);
-            }
+		OutputStream os = null;
+		try
+		{
+			byte[] bs = new byte[1024];
+			int len;
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            // 瀹屾瘯锛屽叧闂墍鏈夐摼鎺�
-            try {
-                os.close();
-                inputStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return savePath;
+			File tempFile = new File(path);
+			if (!tempFile.exists())
+			{
+				tempFile.mkdirs();
+			}
+
+			savePath = path + fileName;
+			os = new FileOutputStream(savePath);
+			while ((len = inputStream.read(bs)) != -1)
+			{
+				os.write(bs, 0, len);
+			}
+
+		} 
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		} 
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		} 
+		finally
+		{
+			try
+			{
+				os.close();
+				inputStream.close();
+			} 
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return fileName;
     }
 }

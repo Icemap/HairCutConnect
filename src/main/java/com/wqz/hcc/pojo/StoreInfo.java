@@ -11,6 +11,10 @@ public class StoreInfo {
 
     private String headIcon;
 
+    private String tradeName;
+
+    private Integer bossId;
+
     private String hold;
 
     public Integer getId() {
@@ -51,6 +55,22 @@ public class StoreInfo {
 
     public void setHeadIcon(String headIcon) {
         this.headIcon = headIcon == null ? null : headIcon.trim();
+    }
+
+    public String getTradeName() {
+        return tradeName;
+    }
+
+    public void setTradeName(String tradeName) {
+        this.tradeName = tradeName == null ? null : tradeName.trim();
+    }
+
+    public Integer getBossId() {
+        return bossId;
+    }
+
+    public void setBossId(Integer bossId) {
+        this.bossId = bossId;
     }
 
     public String getHold() {

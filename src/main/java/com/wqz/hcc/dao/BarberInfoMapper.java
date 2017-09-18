@@ -1,5 +1,7 @@
 package com.wqz.hcc.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.annotation.MapperScan;
 
 import com.wqz.hcc.pojo.BarberInfo;
@@ -17,4 +19,6 @@ public interface BarberInfoMapper {
     int updateByPrimaryKeySelective(BarberInfo record);
 
     int updateByPrimaryKey(BarberInfo record);
+    
+    List<BarberInfo> selectInfo(Integer storeId);
 }

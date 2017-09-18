@@ -7,10 +7,12 @@
     <result column="lon" property="lon" jdbcType="DOUBLE" />
     <result column="lat" property="lat" jdbcType="DOUBLE" />
     <result column="head_icon" property="headIcon" jdbcType="VARCHAR" />
+    <result column="trade_name" property="tradeName" jdbcType="VARCHAR" />
+    <result column="boss_id" property="bossId" jdbcType="INTEGER" />
     <result column="hold" property="hold" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, shop_sign, lon, lat, head_icon, hold
+    id, shop_sign, lon, lat, head_icon, trade_name, boss_id, hold
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -18,15 +20,28 @@
     from store_info
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+  <select id="getStore" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from store_info
+    where lon &gt; #{left,jdbcType=DOUBLE}
+      and lon &lt; #{right,jdbcType=DOUBLE}
+      and lat &lt; #{top,jdbcType=DOUBLE}
+      and lat &gt; #{bottom,jdbcType=DOUBLE}
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from store_info
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.wqz.hcc.pojo.StoreInfo" >
     insert into store_info (id, shop_sign, lon, 
-      lat, head_icon, hold)
+      lat, head_icon, trade_name, 
+      boss_id, hold)
     values (#{id,jdbcType=INTEGER}, #{shopSign,jdbcType=VARCHAR}, #{lon,jdbcType=DOUBLE}, 
-      #{lat,jdbcType=DOUBLE}, #{headIcon,jdbcType=VARCHAR}, #{hold,jdbcType=VARCHAR})
+      #{lat,jdbcType=DOUBLE}, #{headIcon,jdbcType=VARCHAR}, #{tradeName,jdbcType=VARCHAR}, 
+      #{bossId,jdbcType=INTEGER}, #{hold,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.wqz.hcc.pojo.StoreInfo" >
     insert into store_info
@@ -45,6 +60,12 @@
       </if>
       <if test="headIcon != null" >
         head_icon,
+      </if>
+      <if test="tradeName != null" >
+        trade_name,
+      </if>
+      <if test="bossId != null" >
+        boss_id,
       </if>
       <if test="hold != null" >
         hold,
@@ -66,6 +87,12 @@
       <if test="headIcon != null" >
         #{headIcon,jdbcType=VARCHAR},
       </if>
+      <if test="tradeName != null" >
+        #{tradeName,jdbcType=VARCHAR},
+      </if>
+      <if test="bossId != null" >
+        #{bossId,jdbcType=INTEGER},
+      </if>
       <if test="hold != null" >
         #{hold,jdbcType=VARCHAR},
       </if>
@@ -86,6 +113,12 @@
       <if test="headIcon != null" >
         head_icon = #{headIcon,jdbcType=VARCHAR},
       </if>
+      <if test="tradeName != null" >
+        trade_name = #{tradeName,jdbcType=VARCHAR},
+      </if>
+      <if test="bossId != null" >
+        boss_id = #{bossId,jdbcType=INTEGER},
+      </if>
       <if test="hold != null" >
         hold = #{hold,jdbcType=VARCHAR},
       </if>
@@ -98,6 +131,8 @@
       lon = #{lon,jdbcType=DOUBLE},
       lat = #{lat,jdbcType=DOUBLE},
       head_icon = #{headIcon,jdbcType=VARCHAR},
+      trade_name = #{tradeName,jdbcType=VARCHAR},
+      boss_id = #{bossId,jdbcType=INTEGER},
       hold = #{hold,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

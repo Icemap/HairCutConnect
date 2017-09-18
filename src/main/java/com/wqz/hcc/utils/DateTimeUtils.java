@@ -6,10 +6,19 @@ import java.util.Date;
 
 public class DateTimeUtils
 {
-	public static Date Str2Date(String datetime) throws ParseException
+	public static Date Str2Date(String datetime)
 	{
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		return format.parse(datetime);
+		Date date = new Date();
+		try
+		{
+			date = format.parse(datetime);
+		} 
+		catch (ParseException e)
+		{
+			e.printStackTrace();
+		}
+		return date;
 	}
 	
 	public static String date2Str(Date datetime)
@@ -17,4 +26,6 @@ public class DateTimeUtils
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		return format.format(datetime);
 	}
+	
+	
 }

@@ -1,5 +1,6 @@
 package com.wqz.hcc.dao;
 
+import org.apache.ibatis.annotations.Param;
 import org.mybatis.spring.annotation.MapperScan;
 
 import com.wqz.hcc.pojo.UserInfo;
@@ -17,4 +18,10 @@ public interface UserInfoMapper {
     int updateByPrimaryKeySelective(UserInfo record);
 
     int updateByPrimaryKey(UserInfo record);
+    
+    Integer loginAccount(
+    		@Param("account")String account, 
+    		@Param("password")String password);
+    
+    Integer getCountAccount(String account);
 }
