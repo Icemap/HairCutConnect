@@ -248,8 +248,14 @@
 	    <version>1.9.1</version>
 	</dependency>
 	<!--               跨域配置结束                                                 -->
-	</dependencies>
-
+	
+	<!-- 文档MD文件配置 -->
+	<dependency>
+	    <groupId>org.pegdown</groupId>
+	    <artifactId>pegdown</artifactId>
+	    <version>1.6.0</version>
+	</dependency>
+  </dependencies>
   <build>
     <finalName>HairCutConnect</finalName>
   </build>

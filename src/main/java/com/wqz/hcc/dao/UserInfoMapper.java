@@ -19,7 +19,7 @@ public interface UserInfoMapper {
 
     int updateByPrimaryKey(UserInfo record);
     
-    Integer loginAccount(
+    UserInfo loginAccount(
     		@Param("account")String account, 
     		@Param("password")String password);
     

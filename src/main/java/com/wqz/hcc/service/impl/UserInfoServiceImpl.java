@@ -25,9 +25,9 @@ public class UserInfoServiceImpl implements UserInfoService
 	@Resource(name = "propConfig")
 	PropConfig propConfig;
 	
-	public Boolean accountLogin(String account, String password)
+	public UserInfo accountLogin(String account, String password)
 	{
-		return userInfoMapper.loginAccount(account, password) == 1;
+		return userInfoMapper.loginAccount(account, password);
 	}
 
 	public Boolean accountRegister(String account, String password)

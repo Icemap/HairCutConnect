@@ -2,6 +2,8 @@ package com.wqz.hcc.pojo;
 
 import java.util.Date;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 public class UserInfo {
     private Integer id;
 
@@ -9,6 +11,7 @@ public class UserInfo {
 
     private String account;
 
+    @JsonIgnore
     private String password;
 
     private String headIcon;

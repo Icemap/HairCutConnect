@@ -22,8 +22,8 @@
     from user_info
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="loginAccount" resultType="java.lang.Integer">
-    select COUNT(*)
+  <select id="loginAccount" resultMap="BaseResultMap">
+    select *
     from user_info
     where account = #{account,jdbcType=VARCHAR}
       and password = #{password,jdbcType=VARCHAR}

@@ -23,7 +23,7 @@ public class UserInfoController
 	{
 		return userInfoServiceImpl.accountLogin(account, password);
 	}
-
+	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	@ResponseBody
 	public Object register(String account, String password)

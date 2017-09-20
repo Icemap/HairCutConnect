@@ -1,5 +1,7 @@
 package com.wqz.hcc.pojo;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 public class BarberInfo {
     private Integer id;
 
@@ -7,6 +9,7 @@ public class BarberInfo {
 
     private String account;
 
+    @JsonIgnore
     private String password;
 
     private String headIcon;

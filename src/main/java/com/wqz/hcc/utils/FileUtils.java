@@ -165,4 +165,35 @@ public class FileUtils
 		}
 		return fileName;
     }
+	
+	public static String readResourcesByLinesWithEnter(String path)
+	{
+		Resource res = new ClassPathResource(path);
+		
+		try
+		{
+			return readFileByUtf8WithEnter(res.getFile().getAbsolutePath());
+		} 
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+	public static String readFileByUtf8WithEnter(String path) throws IOException
+	{
+		StringBuffer sb = new StringBuffer();
+		FileInputStream fis = new FileInputStream(path);   
+		InputStreamReader isr = new InputStreamReader(fis, "UTF-8");   
+		BufferedReader br = new BufferedReader(isr);   
+		String line = null;   
+		while ((line = br.readLine()) != null) 
+		{   
+			sb.append(line).append(System.getProperty("line.separator"));
+		} 
+		br.close();
+		return sb.toString();
+	}
 }
